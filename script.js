@@ -46,7 +46,7 @@ function game(){
     for (let index = 0; index < 5; index++) {
 
         let prompt = window.prompt("Choose");
-        playerSelection = prompt;
+        playerSelection = prompt.toLowerCase();
 
         if (playerSelection === "rock" || playerSelection === "paper" || playerSelection == "scissors") {
             
