@@ -68,5 +68,3 @@ let computerScore = 0;
 let playerSelection;
 
 game();
-
-/*arreglar el tema de string toLowercase*/
