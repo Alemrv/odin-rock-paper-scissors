@@ -8,43 +8,65 @@ function playRound(playerSelection, computerSelection){
 
     switch (true) {
         case playerSelection == "rock" && computerSelection == "paper":
-            console.log("you lose, paper beats rock");
+            alert("you lose, paper beats rock");
+            computerScore++;
             break;
     
         case playerSelection == "paper" && computerSelection == "rock":
-            console.log("you win!!, paper beats rock");
+            alert("you win!!, paper beats rock");
+            playerScore++;
             break;
 
         case playerSelection == "rock" && computerSelection == "scissors":
-            console.log("you win!!, rock beats scissors");
+            alert("you win!!, rock beats scissors");
+            playerScore++;
             break;
         
         case playerSelection == "scissors" && computerSelection == "rock":
-            console.log("you lose, rock beats scissors");
+            alert("you lose, rock beats scissors");
+            computerScore++;
             break;
 
         case playerSelection == "paper" && computerSelection == "scissors":
-            console.log("you lose, scissors beats paper");
+            alert("you lose, scissors beats paper");
+            computerScore++;
             break;
             
         case playerSelection == "scissors" && computerSelection == "paper":
-            console.log("you win!!, scissors beats paper");
+            alert("you win!!, scissors beats paper");
+            playerScore++;
             break;
         default:
-            console.log("It's a draw!");    
+            alert("It's a draw!");    
     }
 }
 
 function game(){
+
     for (let index = 0; index < 5; index++) {
-        
-        const computerSelection = computerPlay();
-        playRound(playerSelection, computerSelection);
-        
+
+        let prompt = window.prompt("Choose");
+        playerSelection = prompt;
+
+        if (playerSelection === "rock" || playerSelection === "paper" || playerSelection == "scissors") {
+            
+            const computerSelection = computerPlay();
+            playRound(playerSelection, computerSelection);
+            alert("Score is: " + playerScore +" for the player " + computerScore + " for the computer");
+
+        } else {
+            --index;
+            alert("please enter a correct game answer");
+            
+        }
+
     }
 }
+
 let playerScore = 0;
 let computerScore = 0;
-const playerSelection = "rock";
+let playerSelection;
 
-console.log(game());
+game();
+
+/*arreglar el tema de string toLowercase*/
