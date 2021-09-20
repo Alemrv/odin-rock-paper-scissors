@@ -1,3 +1,10 @@
+let playerScore = 0;
+let computerScore = 0;
+let round = 0;
+
+const roundResult = document.querySelector(".roundResult");
+const score = document.querySelector(".score");
+
 function computerPlay(){
     let computerAnswers = ["rock", "paper", "scissors"];
     let selectRandomNumber = Math.floor(Math.random()*3);
@@ -8,63 +15,70 @@ function playRound(playerSelection, computerSelection){
 
     switch (true) {
         case playerSelection == "rock" && computerSelection == "paper":
-            alert("you lose, paper beats rock");
+            roundResult.textContent = "you lose, paper beats rock";
             computerScore++;
+            round++;
             break;
     
         case playerSelection == "paper" && computerSelection == "rock":
-            alert("you win!!, paper beats rock");
+            roundResult.textContent = "you win!!, paper beats rock";
             playerScore++;
+            round++;
             break;
 
         case playerSelection == "rock" && computerSelection == "scissors":
-            alert("you win!!, rock beats scissors");
+            roundResult.textContent = "you win!!, rock beats scissors";
             playerScore++;
+            round++;
             break;
         
         case playerSelection == "scissors" && computerSelection == "rock":
-            alert("you lose, rock beats scissors");
+            roundResult.textContent = "you lose, rock beats scissors";
             computerScore++;
+            round++;
             break;
 
         case playerSelection == "paper" && computerSelection == "scissors":
-            alert("you lose, scissors beats paper");
+            roundResult.textContent = "you lose, scissors beats paper";
             computerScore++;
+            round++;
             break;
             
         case playerSelection == "scissors" && computerSelection == "paper":
-            alert("you win!!, scissors beats paper");
+            roundResult.textContent = "you win!!, scissors beats paper";
             playerScore++;
+            round++;
             break;
         default:
-            alert("It's a draw!");    
+            round++;
+            roundResult.textContent = "It's a draw!";
+               
     }
 }
 
-function game(){
+const buttons = document.querySelectorAll('button');
 
-    for (let index = 0; index < 5; index++) {
+buttons.forEach((button) => {
 
-        let prompt = window.prompt("Choose");
-        playerSelection = prompt.toLowerCase();
+    button.addEventListener("click", () => {
 
-        if (playerSelection === "rock" || playerSelection === "paper" || playerSelection == "scissors") {
-            
-            const computerSelection = computerPlay();
-            playRound(playerSelection, computerSelection);
-            alert("Score is: " + playerScore +" for the player " + computerScore + " for the computer");
+        const playerSelection = button.className;
+        const computerSelection = computerPlay();
 
-        } else {
-            --index;
-            alert("please enter a correct game answer");
-            
-        }
+        playRound(playerSelection, computerSelection);
 
-    }
-}
-
-let playerScore = 0;
-let computerScore = 0;
-let playerSelection;
-
-game();
+        score.textContent = `Round ${round} the score is: ${playerScore} for the player and ${computerScore} for the computer`;
+        if (round === 5) {
+            if (playerScore > computerScore) {
+                roundResult.textContent = "YOU WON THE GAME!!!!";
+            }
+            else{
+                roundResult.textContent = "YOU LOST THE GAME!!!!";
+            }
+            score.textContent = `Final Round ${round} the score is: ${playerScore} for the player and ${computerScore} for the computer`;
+            round = 0;
+            playerScore = 0;
+            computerScore = 0;
+        }      
+    });
+});
