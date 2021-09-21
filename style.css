@@ -1,0 +1,63 @@
+body{
+    background-color: rgb(255, 254, 251);
+}
+
+.button-container{
+    text-align: center;
+    margin-top: 200px;
+}
+
+button{
+    padding: 1em;
+    font-size: 1em;
+    margin: 1em;
+}
+
+.rock{
+    border: 2px solid grey;
+    background-color: white;
+}
+.rock:hover{
+    background-color: grey;
+    transition: 0.5s;
+}
+
+.paper{
+    border: 2px solid rgb(68, 106, 138);
+    background-color: white;
+}
+
+.paper:hover{
+    background-color: rgb(68, 106, 138);
+    transition: 0.5s;
+}
+
+.scissors{
+    border: 2px solid rgb(20, 207, 76);
+    background-color: white;
+}
+
+.scissors:hover{
+    background-color: rgb(20, 207, 76);
+    transition: 0.5s;
+}
+
+.player-score-div{
+    font-size: 1.2em;
+    margin: 0.5em;
+}
+
+.pc-score-div{
+    font-size: 1.2em;
+    margin: 0.5em;
+}
+
+
+.roundResult{
+    font-size: 1.2em;
+    margin: 0.5em;
+}
+
+.btn-hide{
+    display: none;
+}
