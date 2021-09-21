@@ -72,6 +72,9 @@ buttons.forEach((button) => {
             if (playerScore > computerScore) {
                 roundResult.textContent = "YOU WON THE GAME!!!!";
             }
+            else if(playerScore === computerScore){
+                roundResult.textContent = "IT'S A TIE!";
+            }
             else{
                 roundResult.textContent = "YOU LOST THE GAME!!!!";
             }
